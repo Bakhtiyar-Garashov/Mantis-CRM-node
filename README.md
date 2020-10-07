@@ -1,4 +1,4 @@
-# Mantis-CRM-node
+## Mantis CRM node
 This is a part of Mantis project which is developing actively by our team with microservices architecture
 
 ### Setup project environment with [virtualenv](https://virtualenv.pypa.io) and [pip](https://pip.pypa.io).
