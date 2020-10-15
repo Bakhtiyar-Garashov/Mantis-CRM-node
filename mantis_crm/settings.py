@@ -45,11 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-
     # custom apps
     'company',
     # finance',
-
     'drf_yasg2'
 ]
 
