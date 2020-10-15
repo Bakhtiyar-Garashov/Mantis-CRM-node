@@ -16,14 +16,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from drf_yasg2.views import get_schema_view
+from drf_yasg2 import openapi
 
-from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='Mantis CRM company API')
+#SWAGGER schema
+schema_view = get_schema_view(
+      openapi.Info(
+         title="Mantis CRM company API",
+         default_version='v1',
+         description="CRM company node of MANTIS core project",
+         contact=openapi.Contact(email="bakhtiyar.garashov@ut.ee"),
+         license=openapi.License(name="BSD License"),
+      ),
+      public=True,
+   )
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1', schema_view),
-    path('api/v1/company/', include('mantis_crm.company.urls')),
-    #path('api/v1/finance', include('mantis_crm.finance.urls'))
+    path('api/v1/doc', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/v1/company/', include('company.urls')),
+    #path('api/v1/finance', include('finance.urls'))
 ]

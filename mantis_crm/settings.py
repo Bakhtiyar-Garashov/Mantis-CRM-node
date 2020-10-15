@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 
+from dotenv import load_dotenv
+import os
 from pathlib import Path
 
 
@@ -18,8 +20,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # get sensitive data from .env file
-import os
-from dotenv import load_dotenv
 load_dotenv()
 
 
@@ -47,10 +47,10 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # custom apps
-    'mantis_crm.company',
-    # 'mantis_crm.finance',
+    'company',
+    # finance',
 
-    'rest_framework_swagger'
+    'drf_yasg2'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
